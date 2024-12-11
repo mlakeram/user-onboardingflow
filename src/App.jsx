@@ -1,25 +1,17 @@
-import { useState } from 'react';
 import './App.css';
+import Home from './components/Home';
+import Admin from './components/Admin';
+import Data from './components/Data';
+import { Routes, Route } from 'react-router-dom';
 
 function App() {
-  const [onboardStep, setOnboardStep] = useState(0);
-  const onBoardPages = [
-    <div key='0'>Page 1 - Email & Password</div>,
-    <div key='1' id='page=1 page=2'>
-      Page 2 - Birthday & About Me
-    </div>,
-    <div key='1'>Page 3 - Address</div>,
-    <div key='1'>Page 4 - Terms And Conditions</div>,
-  ];
-
-  function handleNextClick() {
-    setOnboardStep((onboardStep) => onboardStep + 1);
-  }
-
   return (
     <div id='appContainer'>
-      {onBoardPages[onboardStep % onBoardPages.length]}
-      <button onClick={handleNextClick}>Next</button>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/admin' element={<Admin />} />
+        <Route path='/data' element={<Data />} />
+      </Routes>
     </div>
   );
 }

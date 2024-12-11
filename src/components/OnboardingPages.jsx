@@ -15,13 +15,24 @@ export default function OnboardingPages() {
   ];
 
   function handleNextClick() {
-    setOnboardStep((onboardStep) => onboardStep + 1);
+    if (onboardStep < onBoardPages.length - 1) {
+      setOnboardStep((onBoardStep) => onBoardStep + 1);
+    }
+  }
+
+  function handleBackClick() {
+    if (onboardStep > 0) {
+      setOnboardStep((onBoardStep) => onBoardStep - 1);
+    }
   }
 
   return (
-    <div id='appContainer'>
-      {onBoardPages[onboardStep % onBoardPages.length]}
-      <button onClick={handleNextClick}>Next</button>
+    <div id='onboardingPagesContainer'>
+      {onboardStep > 0 && <button onClick={handleBackClick}>Back</button>}
+      {onBoardPages[onboardStep]}
+      <button onClick={handleNextClick}>
+        {onboardStep < onBoardPages.length - 1 ? 'Next' : 'Submit'}
+      </button>
     </div>
   );
 }

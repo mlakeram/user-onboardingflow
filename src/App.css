@@ -1,4 +1,5 @@
-#appContainer {
+#appContainer,
+#onboardingPagesContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;

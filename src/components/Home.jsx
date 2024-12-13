@@ -11,6 +11,13 @@ export default function Home() {
   const [password, setPassword] = useState('');
   const [birthday, setBirthday] = useState('');
   const [aboutMe, setAboutMe] = useState('');
+  const [address, setAddress] = useState({
+    street: '',
+    city: '',
+    state: '',
+    zip: '',
+    country: '',
+  });
 
   const onBoardPages = [
     [
@@ -26,7 +33,7 @@ export default function Home() {
       <Birthday key='birthday' birthday={birthday} setBirthday={setBirthday} />,
       <AboutMe key='aboutme' aboutMe={aboutMe} setAboutMe={setAboutMe} />,
     ],
-    [<Address key='address' />],
+    [<Address key='address' address={address} setAddress={setAddress} />],
     [<Welcome key='welcome' />],
   ];
 
@@ -37,6 +44,7 @@ export default function Home() {
     console.log(email, password);
     console.log(birthday);
     console.log(aboutMe);
+    console.log(address);
   }
 
   return (

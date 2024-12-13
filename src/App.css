@@ -22,3 +22,12 @@
   min-width: 350px;
   min-height: 150px;
 }
+
+#addressContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputBox {
+  margin: 5px 0;
+}

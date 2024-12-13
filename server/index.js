@@ -6,7 +6,8 @@ const app = express();
 const PORT = 3001;
 app.use(cors());
 
-const databaseURL = '';
+const databaseURL =
+  'postgres://emjzlloo:KXquwbCINBQ8ukluBBuID_r8ujrej1F6@lallah.db.elephantsql.com/emjzlloo';
 
 const { Pool } = pg;
 const pool = new Pool({
@@ -28,6 +29,12 @@ app.get('/api/data', async (req, res) => {
     console.error('Error fetching users:', error);
     res.status(500).json({ error: 'ERROR: Failed to fetch users' });
   }
+});
+
+app.post('/api/submituser', express.json(), async (req, res) => {
+  console.log('post received');
+  console.log(req.body);
+  res.send('User saved');
 });
 
 app.listen(PORT, () => {

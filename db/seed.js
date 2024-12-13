@@ -2,7 +2,8 @@ import pg from 'pg';
 
 const { Pool } = pg;
 
-const connectionString = '';
+const connectionString =
+  'postgres://emjzlloo:KXquwbCINBQ8ukluBBuID_r8ujrej1F6@lallah.db.elephantsql.com/emjzlloo';
 
 const pool = new Pool({
   connectionString,

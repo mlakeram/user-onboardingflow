@@ -2,8 +2,8 @@ import { useState } from 'react';
 import Birthday from './Birthday';
 import AboutMe from './AboutMe';
 import Address from './Address';
-import Welcome from './Welcome';
 import Credentials from './Credentials';
+import SubmitData from './SubmitData';
 
 export default function Home() {
   const [onboardStep, setOnboardStep] = useState(0);
@@ -34,7 +34,16 @@ export default function Home() {
       <AboutMe key='aboutme' aboutMe={aboutMe} setAboutMe={setAboutMe} />,
     ],
     [<Address key='address' address={address} setAddress={setAddress} />],
-    [<Welcome key='welcome' />],
+    [
+      <SubmitData
+        key='submitdata'
+        email={email}
+        password={password}
+        birthday={birthday}
+        aboutme={aboutMe}
+        address={address}
+      />,
+    ],
   ];
 
   function handleNextClick() {

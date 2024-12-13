@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "email_address": "user1@email.com",
+    "password": "$2a$10$1HGPzCqqVmYGlAEoKc8xt.ih2bFcEgAmXpzrbVWrEwHIZ0gbxS.1K",
+    "about_me": "I like dogs",
+    "birthday": "1991-01-01T05:00:00.000Z",
+    "address_street": "123 Broadway",
+    "address_city": "New York",
+    "address_state": "NY",
+    "address_zipcode": "11111",
+    "address_country": "United States"
+  },
+  {
+    "id": 2,
+    "email_address": "user2@email.com",
+    "password": "$2a$10$dWPCD5Z5yepMckXhBdHCO.PC3SLnb7MA4CQ/KwL3YY09/B2WOEGd6",
+    "about_me": "I like cats",
+    "birthday": "1992-02-02T05:00:00.000Z",
+    "address_street": "456 Park Ave",
+    "address_city": "New York",
+    "address_state": "NY",
+    "address_zipcode": "22222",
+    "address_country": "United States"
+  },
+  {
+    "id": 3,
+    "email_address": "user3@email.com",
+    "password": "$2a$10$mpKnIOk0yltrNHNyHPGFY.fBNWAMhNRjwAx4y0NCA.f47m053siT2",
+    "about_me": "I like birds",
+    "birthday": "1993-03-03T05:00:00.000Z",
+    "address_street": "789 Canal St.",
+    "address_city": "New York",
+    "address_state": "NY",
+    "address_zipcode": "33333",
+    "address_country": "United States"
+  },
+  {
+    "id": 4,
+    "email_address": "user4@email.com",
+    "password": "$2a$10$0nOsMx0pgJb7zoP1nPkm6ePC4wVa383kpaSKmM18MOhkfgUCz7Ej2",
+    "about_me": "I like turtles",
+    "birthday": "1994-04-04T04:00:00.000Z",
+    "address_street": "101112 Madison Ave",
+    "address_city": "New York",
+    "address_state": "NY",
+    "address_zipcode": "44444",
+    "address_country": "United States"
+  },
+  {
+    "id": 5,
+    "email_address": "user5@email.com",
+    "password": "$2a$10$sk3vcjAQKkuxOaO9mY68Keobyojtq0sccIhA9qv3g5rwkIDQE7VcK",
+    "about_me": "I like whales",
+    "birthday": "1995-05-05T04:00:00.000Z",
+    "address_street": "131415 Lexington Ave",
+    "address_city": "New York",
+    "address_state": "NY",
+    "address_zipcode": "55555",
+    "address_country": "United States"
+  }
+]

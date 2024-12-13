@@ -1,4 +1,3 @@
-#appContainer,
 #onboardingPagesContainer {
   display: flex;
   flex-direction: column;
@@ -8,11 +7,9 @@
   height: 100vh;
 }
 
-table {
-  border-collapse: separate;
-  border-spacing: 10px;
-}
-
-td {
-  padding: 0 10px;
+#dataContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

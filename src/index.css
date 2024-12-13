@@ -50,6 +50,15 @@ button:hover {
   border-color: #646cff;
 }
 
+table {
+  border-collapse: separate;
+  border-spacing: 10px;
+}
+
+td {
+  padding: 0 10px;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

@@ -7,3 +7,12 @@
   width: 100vw;
   height: 100vh;
 }
+
+table {
+  border-collapse: separate;
+  border-spacing: 10px;
+}
+
+td {
+  padding: 0 10px;
+}

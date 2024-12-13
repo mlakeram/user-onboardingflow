@@ -9,6 +9,7 @@ export default function Home() {
   const [onboardStep, setOnboardStep] = useState(0);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [birthday, setBirthday] = useState('');
 
   const onBoardPages = [
     [
@@ -20,7 +21,10 @@ export default function Home() {
         setPassword={setPassword}
       />,
     ],
-    [<Birthday key='birthday' />, <AboutMe key='aboutme' />],
+    [
+      <Birthday key='birthday' birthday={birthday} setBirthday={setBirthday} />,
+      <AboutMe key='aboutme' />,
+    ],
     [<Address key='address' />],
     [<Welcome key='welcome' />],
   ];
@@ -30,6 +34,7 @@ export default function Home() {
       setOnboardStep((onBoardStep) => onBoardStep + 1);
     }
     console.log(email, password);
+    console.log(birthday);
   }
 
   return (

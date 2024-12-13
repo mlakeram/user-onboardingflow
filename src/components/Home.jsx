@@ -10,6 +10,7 @@ export default function Home() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [birthday, setBirthday] = useState('');
+  const [aboutMe, setAboutMe] = useState('');
 
   const onBoardPages = [
     [
@@ -23,7 +24,7 @@ export default function Home() {
     ],
     [
       <Birthday key='birthday' birthday={birthday} setBirthday={setBirthday} />,
-      <AboutMe key='aboutme' />,
+      <AboutMe key='aboutme' aboutMe={aboutMe} setAboutMe={setAboutMe} />,
     ],
     [<Address key='address' />],
     [<Welcome key='welcome' />],
@@ -35,6 +36,7 @@ export default function Home() {
     }
     console.log(email, password);
     console.log(birthday);
+    console.log(aboutMe);
   }
 
   return (

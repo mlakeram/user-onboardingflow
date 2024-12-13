@@ -13,3 +13,12 @@
   justify-content: center;
   align-items: center;
 }
+
+#aboutMeContainer {
+  padding: 30px;
+}
+
+#aboutMe {
+  min-width: 350px;
+  min-height: 150px;
+}

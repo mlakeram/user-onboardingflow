@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 
 export default function Data() {
-  const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState('');
+  const [adminSettings, setAdminSettings] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -12,12 +13,17 @@ export default function Data() {
         const data = await fetch('http://localhost:3001/api/data');
         const dataJSON = await data.json();
         setUserData(dataJSON);
+
+        const settings = await fetch('http://localhost:3001/api/adminsettings');
+        const settingsJSON = await settings.json();
+        setAdminSettings(settingsJSON);
       } catch (error) {
         setError(error);
       } finally {
         setIsLoading(false);
       }
     };
+
     getUserData();
   }, []);
 
@@ -61,6 +67,27 @@ export default function Data() {
                 <td>{user.address_state}</td>
                 <td>{user.address_zipcode}</td>
                 <td>{user.address_country}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div id='adminSettingsContainer'>
+        <h2>Admin Settings</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Component</th>
+              <th>Page</th>
+            </tr>
+          </thead>
+          <tbody>
+            {adminSettings.map((setting) => (
+              <tr key={setting.component}>
+                <td>{setting.id}</td>
+                <td>{setting.component}</td>
+                <td>{setting.page}</td>
               </tr>
             ))}
           </tbody>

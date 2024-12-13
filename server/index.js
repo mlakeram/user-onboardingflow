@@ -31,6 +31,19 @@ app.get('/api/data', async (req, res) => {
   }
 });
 
+app.get('/api/adminsettings', async (req, res) => {
+  try {
+    const client = await pool.connect();
+    const result = await client.query('SELECT * FROM admin_settings');
+    const settings = result.rows;
+    client.release();
+    res.status(200).json(settings);
+  } catch (error) {
+    console.error('Error fetching admin settings:', error);
+    res.status(500).json({ error: 'ERROR: Failed to fetch admin settings' });
+  }
+});
+
 app.post('/api/submituser', express.json(), async (req, res) => {
   try {
     const { email, password, aboutMe, birthday, address } = req.body;
@@ -40,17 +53,6 @@ app.post('/api/submituser', express.json(), async (req, res) => {
         VALUES ('${email}', crypt('${password}', gen_salt('bf', 10)), '${aboutMe}', '${birthday}', '${address.street}', '${address.city}', '${address.state}', '${address.zip}', '${address.country}')
         RETURNING id;
     `;
-    // const values = [
-    //   email,
-    //   crypt(password, gen_salt('bf', 10)),
-    //   aboutMe,
-    //   birthday,
-    //   address.street,
-    //   address.city,
-    //   address.state,
-    //   address.zip,
-    //   address.country,
-    // ];
 
     const result = await client.query(query);
     const newUserId = result.rows[0].id;

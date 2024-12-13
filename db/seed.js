@@ -16,7 +16,7 @@ async function seedDatabase() {
 
       CREATE TABLE IF NOT EXISTS user_data (
         id SERIAL PRIMARY KEY,
-        email_address VARCHAR(255) NOT NULL,
+        email_address VARCHAR(255) UNIQUE NOT NULL,
         password TEXT NOT NULL,
         about_me TEXT NOT NULL,
         birthday DATE NOT NULL,
@@ -48,8 +48,8 @@ async function seedDatabase() {
           '1991-01-01',
           '123 Broadway',
           'New York',
-          'NY', '
-          11111',
+          'NY', 
+          '11111',
           'United States'
         ),
         (

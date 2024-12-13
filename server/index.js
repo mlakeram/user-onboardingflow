@@ -32,9 +32,37 @@ app.get('/api/data', async (req, res) => {
 });
 
 app.post('/api/submituser', express.json(), async (req, res) => {
-  console.log('post received');
-  console.log(req.body);
-  res.send('User saved');
+  try {
+    const { email, password, aboutMe, birthday, address } = req.body;
+    const client = await pool.connect();
+    const query = `
+      INSERT INTO user_data (email_address, password, about_me, birthday, address_street, address_city, address_state, address_zipcode, address_country)
+        VALUES ('${email}', crypt('${password}', gen_salt('bf', 10)), '${aboutMe}', '${birthday}', '${address.street}', '${address.city}', '${address.state}', '${address.zip}', '${address.country}')
+        RETURNING id;
+    `;
+    // const values = [
+    //   email,
+    //   crypt(password, gen_salt('bf', 10)),
+    //   aboutMe,
+    //   birthday,
+    //   address.street,
+    //   address.city,
+    //   address.state,
+    //   address.zip,
+    //   address.country,
+    // ];
+
+    const result = await client.query(query);
+    const newUserId = result.rows[0].id;
+
+    client.release();
+    res
+      .status(201)
+      .json({ message: 'User created successfully', id: newUserId });
+  } catch (error) {
+    console.error('Error creating user:', error);
+    res.status(500).json({ error: 'Failed to create user' });
+  }
 });
 
 app.listen(PORT, () => {

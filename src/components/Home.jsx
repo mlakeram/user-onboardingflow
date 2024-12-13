@@ -40,13 +40,14 @@ export default function Home() {
         email={email}
         password={password}
         birthday={birthday}
-        aboutme={aboutMe}
+        aboutMe={aboutMe}
         address={address}
       />,
     ],
   ];
 
-  function handleNextClick() {
+  function handleNextClick(event) {
+    event.preventDefault();
     if (onboardStep < onBoardPages.length - 1) {
       setOnboardStep((onBoardStep) => onBoardStep + 1);
     }
@@ -60,7 +61,7 @@ export default function Home() {
     <div id='onboardingPagesContainer'>
       {onBoardPages[onboardStep]}
       {onboardStep < onBoardPages.length - 1 ? (
-        <button onClick={handleNextClick}>
+        <button onClick={(e) => handleNextClick(e)}>
           {onboardStep < onBoardPages.length - 2 ? 'Next' : 'Submit'}
         </button>
       ) : (

@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 export default function Address({ address, setAddress }) {
   const handleChange = (event) => {
+    event.preventDefault();
     const { name, value } = event.target;
     setAddress({
       ...address,

@@ -10,6 +10,7 @@ export default function SubmitData({
 }) {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  console.table(email, password, birthday, aboutMe, address);
 
   useEffect(() => {
     const submitUserData = async () => {
@@ -30,6 +31,8 @@ export default function SubmitData({
     };
     submitUserData();
   }, []);
+
+  console.log('render');
 
   if (isLoading) {
     return <div>Saving data</div>;

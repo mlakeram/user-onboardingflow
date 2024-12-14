@@ -10,7 +10,6 @@ export default function SubmitData({
 }) {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  console.table(email, password, birthday, aboutMe, address);
 
   useEffect(() => {
     const submitUserData = async () => {
@@ -32,8 +31,6 @@ export default function SubmitData({
     submitUserData();
   }, []);
 
-  console.log('render');
-
   if (isLoading) {
     return <div>Saving data</div>;
   }
@@ -42,7 +39,7 @@ export default function SubmitData({
     return <div>Error saving user data {error.message}</div>;
   }
 
-  return <div id='tosContainer'>Thank you for signing up!</div>;
+  return <div id='submitDataContainer'>Thank you for signing up!</div>;
 }
 
 SubmitData.propTypes = {

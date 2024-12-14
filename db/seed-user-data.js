@@ -13,6 +13,9 @@ async function seedDatabase() {
   try {
     const client = await pool.connect();
     `CREATE EXTENSION pgcrypto;`;
+
+    const dropTable = `DROP TABLE IF EXISTS user_data;`;
+
     const createTableQuery = `
 
       CREATE TABLE IF NOT EXISTS user_data (
@@ -101,6 +104,7 @@ async function seedDatabase() {
         );
     `;
 
+    await client.query(dropTable);
     await client.query(createTableQuery);
     await client.query(insertDataQuery);
 

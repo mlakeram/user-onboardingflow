@@ -12,6 +12,9 @@ const pool = new Pool({
 async function seedAdminSettings() {
   try {
     const client = await pool.connect();
+
+    const dropTable = `DROP TABLE IF EXISTS admin_settings;`;
+
     const createTableQuery = `
 
       CREATE TABLE IF NOT EXISTS admin_settings (
@@ -23,11 +26,14 @@ async function seedAdminSettings() {
 
     const insertDataQuery = `
       INSERT INTO admin_settings (component, page) VALUES
+        ('credentials', 1),
         ('birthday', 2),
         ('aboutMe', 2),
-        ('address', 3);
+        ('address', 3),
+        ('submitData', 4);
     `;
 
+    await client.query(dropTable);
     await client.query(createTableQuery);
     await client.query(insertDataQuery);
 

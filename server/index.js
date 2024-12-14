@@ -26,7 +26,7 @@ app.get('/api/data', async (req, res) => {
     client.release();
     res.status(200).json(users);
   } catch (error) {
-    console.error('Error fetching users:', error);
+    console.error('Error fetching users:', error.message);
     res.status(500).json({ error: 'ERROR: Failed to fetch users' });
   }
 });
@@ -39,7 +39,7 @@ app.get('/api/adminsettings', async (req, res) => {
     client.release();
     res.status(200).json(settings);
   } catch (error) {
-    console.error('Error fetching admin settings:', error);
+    console.error('Error fetching admin settings:', error.message);
     res.status(500).json({ error: 'ERROR: Failed to fetch admin settings' });
   }
 });
@@ -51,8 +51,8 @@ app.post('/api/submituser', express.json(), async (req, res) => {
     const query = `
       INSERT INTO user_data (email_address, password, about_me, birthday, address_street, address_city, address_state, address_zipcode, address_country)
         VALUES ('${email}', crypt('${password}', gen_salt('bf', 10)), '${aboutMe}', '${birthday}', '${address.street}', '${address.city}', '${address.state}', '${address.zip}', '${address.country}')
-        RETURNING id;
-    `;
+        ON CONFLICT (email_address) DO NOTHING;
+        `;
 
     const result = await client.query(query);
     const newUserId = result.rows[0].id;
@@ -62,7 +62,7 @@ app.post('/api/submituser', express.json(), async (req, res) => {
       .status(201)
       .json({ message: 'User created successfully', id: newUserId });
   } catch (error) {
-    console.error('Error creating user:', error);
+    console.error('Error creating user:', error.message);
     res.status(500).json({ error: 'Failed to create user' });
   }
 });

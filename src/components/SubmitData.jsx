@@ -32,11 +32,15 @@ export default function SubmitData({
   }, []);
 
   if (isLoading) {
-    return <div>Saving data</div>;
+    return <div className='fetchingStatus'>Saving data</div>;
   }
 
   if (error) {
-    return <div>Error saving user data {error.message}</div>;
+    return (
+      <div className='fetchingStatus'>
+        Error saving user data {error.message}
+      </div>
+    );
   }
 
   return <div id='submitDataContainer'>Thank you for signing up!</div>;

@@ -78,11 +78,15 @@ export default function Home() {
   }
 
   if (isLoading) {
-    return <div>Fetching settings...</div>;
+    return <div className='fetchingStatus'>Fetching settings...</div>;
   }
 
   if (error) {
-    return <div>Error fetching settings {error.message}</div>;
+    return (
+      <div className='fetchingStatus'>
+        Error fetching settings {error.message}
+      </div>
+    );
   }
 
   return (

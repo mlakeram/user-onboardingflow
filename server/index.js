@@ -25,6 +25,7 @@ app.get('/api/data', async (req, res) => {
     const users = result.rows;
     client.release();
     res.status(200).json(users);
+    console.log('User save succesfully');
   } catch (error) {
     console.error('Error fetching users:', error.message);
     res.status(500).json({ error: 'ERROR: Failed to fetch users' });
@@ -54,13 +55,10 @@ app.post('/api/submituser', express.json(), async (req, res) => {
         ON CONFLICT (email_address) DO NOTHING;
         `;
 
-    const result = await client.query(query);
-    const newUserId = result.rows[0].id;
+    client.query(query);
 
     client.release();
-    res
-      .status(201)
-      .json({ message: 'User created successfully', id: newUserId });
+    res.status(201).json({ message: 'User created successfully' });
   } catch (error) {
     console.error('Error creating user:', error.message);
     res.status(500).json({ error: 'Failed to create user' });

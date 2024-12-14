@@ -28,11 +28,15 @@ export default function Data() {
   }, []);
 
   if (isLoading) {
-    return <div>Loading Data</div>;
+    return <div className='fetchingStatus'>Loading Data</div>;
   }
 
   if (error) {
-    return <div>Error fetching user data {error.message}</div>;
+    return (
+      <div className='fetchingStatus'>
+        Error fetching user data {error.message}
+      </div>
+    );
   }
 
   return (

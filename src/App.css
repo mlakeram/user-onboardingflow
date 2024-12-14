@@ -1,4 +1,5 @@
-#onboardingPagesContainer {
+#onboardingPagesContainer,
+.fetchingStatus {
   display: flex;
   flex-direction: column;
   justify-content: center;

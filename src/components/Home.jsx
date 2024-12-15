@@ -19,12 +19,10 @@ export default function Home() {
     country: '',
   });
   const [adminSettings, setAdminSettings] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
 
   useEffect(() => {
     const getAdminSettings = async () => {
-      setIsLoading(true);
       try {
         const settings = await fetch(
           'https://useronboardingapi.vercel.app/api/adminsettings'
@@ -33,8 +31,6 @@ export default function Home() {
         setAdminSettings(() => settingsJSON);
       } catch (error) {
         setError(error);
-      } finally {
-        setIsLoading(false);
       }
     };
 
@@ -79,10 +75,6 @@ export default function Home() {
     }
   }
 
-  if (isLoading) {
-    return <div className='fetchingStatusMessage'>Fetching settings...</div>;
-  }
-
   if (error) {
     return (
       <div className='fetchingStatusMessage'>
@@ -92,7 +84,7 @@ export default function Home() {
   }
 
   return (
-    <div id='onboardingPagesContainer'>
+    <div id='homeContainer'>
       {adminSettings
         .filter((setting) => setting.page === onboardStep)
         .map((setting, idx, arr) => (

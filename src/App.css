@@ -1,41 +1,16 @@
-#headerContainer {
-  display: flex;
-  justify-content: center;
-  margin: 20px;
-}
-
-#onboardingPagesContainer,
-#adminContainer,
-.fetchingStatusMessage {
+#appContainer {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   width: 100vw;
   height: 100vh;
 }
 
-#dataContainer {
+#headerContainer {
   display: flex;
-  flex-direction: column;
-}
-
-#aboutMeContainer {
-  padding: 30px;
-}
-
-#aboutMe {
-  min-width: 350px;
-  min-height: 150px;
-}
-
-#addressContainer {
-  display: flex;
-  flex-direction: column;
-}
-
-.inputBox {
-  margin: 5px 0;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 20px;
 }
 
 nav ul {
@@ -54,9 +29,47 @@ nav a {
   color: #b1aaaa;
 }
 
-#adminContainer {
+#mainContainer {
+  flex-grow: 1;
+}
+
+#homeContainer {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  height: 100vh;
+  align-items: center;
+  flex-grow: 1;
+}
+
+#aboutMeContainer {
+  padding: 20px;
+}
+
+#aboutMe {
+  min-width: 350px;
+  min-height: 150px;
+  padding: 10px;
+}
+
+#addressContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputBox {
+  margin: 5px;
+  padding: 5px;
+}
+
+#adminContainer,
+.fetchingStatusMessage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 85vh;
+  gap: 15px;
 }
 
 .adminSetting label {
@@ -70,7 +83,6 @@ nav a {
 }
 
 .adminSetting h5 {
-  /* width: 100px; */
   margin-left: 10px;
 }
 
@@ -80,6 +92,12 @@ nav a {
 
 .adminSetting input[type='radio']:first-child {
   margin-left: 100px;
+}
+
+#dataContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
 }
 
 #notification {

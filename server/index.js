@@ -25,7 +25,6 @@ app.get('/api/data', async (req, res) => {
     const users = result.rows;
     client.release();
     res.status(200).json(users);
-    console.log('User save succesfully');
   } catch (error) {
     console.error('Error fetching users:', error.message);
     res.status(500).json({ error: 'ERROR: Failed to fetch users' });
@@ -45,7 +44,32 @@ app.get('/api/adminsettings', async (req, res) => {
   }
 });
 
-app.post('/api/submituser', express.json(), async (req, res) => {
+app.post('/api/adminsettings', express.json(), async (req, res) => {
+  try {
+    const { birthdayPage, aboutMePage, addressPage } = req.body;
+    const client = await pool.connect();
+    const query = `
+      UPDATE admin_settings 
+      SET page = CASE component
+        WHEN 'birthday' THEN ${birthdayPage}
+        WHEN 'aboutMe' THEN ${aboutMePage}
+        WHEN 'address' THEN ${addressPage}
+        END
+      WHERE component IN ('birthday', 'aboutMe', 'address');
+      `;
+
+    await client.query(query);
+
+    client.release();
+    res.status(201).json({ message: 'Settings updated' });
+    console.log('Settings succesfully updated');
+  } catch (error) {
+    console.error('Error saving settings:', error.message);
+    res.status(500).json({ error: 'Failed to save settings' });
+  }
+});
+
+app.post('/api/user', express.json(), async (req, res) => {
   try {
     const { email, password, aboutMe, birthday, address } = req.body;
     const client = await pool.connect();
@@ -59,6 +83,7 @@ app.post('/api/submituser', express.json(), async (req, res) => {
 
     client.release();
     res.status(201).json({ message: 'User created successfully' });
+    console.log('User save succesfully');
   } catch (error) {
     console.error('Error creating user:', error.message);
     res.status(500).json({ error: 'Failed to create user' });

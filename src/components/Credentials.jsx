@@ -8,7 +8,6 @@ export default function Credentials({
   return (
     <form>
       <div>
-        {/* <label htmlFor='email'>Email:</label> */}
         <input
           type='email'
           id='email'
@@ -20,7 +19,6 @@ export default function Credentials({
         />
       </div>
       <div>
-        {/* <label htmlFor='password'>Password:</label> */}
         <input
           type='password'
           id='password'

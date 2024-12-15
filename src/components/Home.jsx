@@ -78,12 +78,12 @@ export default function Home() {
   }
 
   if (isLoading) {
-    return <div className='fetchingStatus'>Fetching settings...</div>;
+    return <div className='fetchingStatusMessage'>Fetching settings...</div>;
   }
 
   if (error) {
     return (
-      <div className='fetchingStatus'>
+      <div className='fetchingStatusMessage'>
         Error fetching settings {error.message}
       </div>
     );
@@ -98,7 +98,6 @@ export default function Home() {
             {onBoardingPages[setting.component]}
             {setting.page < 4 && idx === arr.length - 1 && (
               <button onClick={(e) => handleNextClick(e)}>
-                {' '}
                 {setting.page < 3 ? 'Next' : 'Submit'}
               </button>
             )}

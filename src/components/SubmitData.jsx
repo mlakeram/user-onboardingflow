@@ -15,7 +15,7 @@ export default function SubmitData({
     const submitUserData = async () => {
       setIsLoading(true);
       try {
-        await fetch('http://localhost:3001/api/submituser', {
+        await fetch('http://localhost:3001/api/user', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

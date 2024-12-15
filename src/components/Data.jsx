@@ -10,11 +10,15 @@ export default function Data() {
     const getUserData = async () => {
       setIsLoading(true);
       try {
-        const data = await fetch('http://localhost:3001/api/data');
+        const data = await fetch(
+          'https://useronboardingapi.vercel.app/api/data'
+        );
         const dataJSON = await data.json();
         setUserData(dataJSON);
 
-        const settings = await fetch('http://localhost:3001/api/adminsettings');
+        const settings = await fetch(
+          'https://useronboardingapi.vercel.app/api/adminsettings'
+        );
         const settingsJSON = await settings.json();
         setAdminSettings(settingsJSON);
       } catch (error) {

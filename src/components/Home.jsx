@@ -26,7 +26,9 @@ export default function Home() {
     const getAdminSettings = async () => {
       setIsLoading(true);
       try {
-        const settings = await fetch('http://localhost:3001/api/adminsettings');
+        const settings = await fetch(
+          'https://useronboardingapi.vercel.app/api/adminsettings'
+        );
         const settingsJSON = await settings.json();
         setAdminSettings(() => settingsJSON);
       } catch (error) {

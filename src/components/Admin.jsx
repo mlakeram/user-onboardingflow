@@ -12,7 +12,9 @@ export default function AdminSettings() {
     const getUserData = async () => {
       setIsLoading(true);
       try {
-        const settings = await fetch('http://localhost:3001/api/adminsettings');
+        const settings = await fetch(
+          'https://useronboardingapi.vercel.app/api/adminsettings'
+        );
         const settingsJSON = await settings.json();
 
         setBirthdayPage(
@@ -45,7 +47,7 @@ export default function AdminSettings() {
     const submitSettings = async () => {
       setIsLoading(true);
       try {
-        await fetch('http://localhost:3001/api/adminsettings', {
+        await fetch('https://useronboardingapi.vercel.app/api/adminsettings', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

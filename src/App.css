@@ -1,16 +1,37 @@
-#appContainer {
-  display: flex;
-  flex-direction: column;
-  width: 100vw;
-  height: 100vh;
-}
-
 #headerContainer {
   display: flex;
+  width: 95vw;
+  justify-content: center;
+  margin: 20px;
+}
+
+#onboardingPagesContainer,
+#adminContainer,
+.fetchingStatusMessage {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  margin: 20px;
+  width: 100vw;
+  height: 85vh;
+}
+
+#aboutMeContainer {
+  padding: 30px;
+}
+
+#aboutMe {
+  min-width: 350px;
+  min-height: 150px;
+}
+
+#addressContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputBox {
+  margin: 5px 0;
 }
 
 nav ul {
@@ -29,47 +50,9 @@ nav a {
   color: #b1aaaa;
 }
 
-#mainContainer {
-  flex-grow: 1;
-}
-
-#homeContainer {
-  height: 80vh;
-  display: flex;
-  flex-direction: column;
+#adminContainer {
   justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-}
-
-#aboutMeContainer {
-  padding: 20px;
-}
-
-#aboutMe {
-  min-width: 350px;
-  min-height: 150px;
-  padding: 10px;
-}
-
-#addressContainer {
-  display: flex;
-  flex-direction: column;
-}
-
-.inputBox {
-  margin: 5px;
-  padding: 5px;
-}
-
-#adminContainer,
-.fetchingStatusMessage {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   height: 85vh;
-  gap: 15px;
 }
 
 .adminSetting label {
@@ -97,7 +80,11 @@ nav a {
 #dataContainer {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  height: 85vh;
+}
+
+h2 {
+  padding: 10px;
 }
 
 #notification {

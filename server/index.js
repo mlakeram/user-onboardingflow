@@ -5,11 +5,7 @@ import path from 'path';
 
 const app = express();
 const PORT = 3001;
-app.use(
-  cors({
-    origin: 'https://useronboardingflow-a83jqj0bq-calamitylabs.vercel.app',
-  })
-);
+app.use(cors());
 
 const databaseURL =
   'postgres://emjzlloo:KXquwbCINBQ8ukluBBuID_r8ujrej1F6@lallah.db.elephantsql.com/emjzlloo';

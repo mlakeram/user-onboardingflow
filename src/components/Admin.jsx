@@ -149,7 +149,7 @@ export default function AdminSettings() {
         [birthdayPage, aboutMePage, addressPage].includes(3) && (
           <button onClick={saveSettings}>Save</button>
         )}
-      <div id='notificationMessage'>{savedMessage}</div>
+      <div id='notification'>{savedMessage}</div>
     </div>
   );
 }

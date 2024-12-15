@@ -1,6 +1,7 @@
 import express from 'express';
 import pg from 'pg';
 import cors from 'cors';
+import path from 'path';
 
 const app = express();
 const PORT = 3001;
@@ -13,6 +14,8 @@ const { Pool } = pg;
 const pool = new Pool({
   connectionString: databaseURL,
 });
+
+app.use(express.static(path.join(path.dirname('./dist'), 'dist')));
 
 app.get('/api', (req, res) => {
   res.send('Response from express server');
@@ -88,6 +91,12 @@ app.post('/api/user', express.json(), async (req, res) => {
     console.error('Error creating user:', error.message);
     res.status(500).json({ error: 'Failed to create user' });
   }
+});
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(path.dirname('./dist'), 'dist', 'index.html'), {
+    root: path.dirname('./dist'),
+  });
 });
 
 app.listen(PORT, () => {

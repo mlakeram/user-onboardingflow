@@ -1,13 +1,13 @@
 import express from 'express';
 import pg from 'pg';
 import cors from 'cors';
-import path from 'path';
+// import path from 'path';
 
 const app = express();
 const PORT = 3001;
 app.use(
   cors({
-    origin: ['https://user-onboardingflow-l25fxpp58-calamitylabs.vercel.app/'],
+    origin: ['https://useronboardingapi.vercel.app/*'],
     methods: ['POST', 'GET'],
     credentials: true,
   })
@@ -21,7 +21,7 @@ const pool = new Pool({
   connectionString: databaseURL,
 });
 
-app.use(express.static(path.join(path.dirname('./dist'), 'dist')));
+// app.use(express.static(path.join(path.dirname('./dist'), 'dist')));
 
 app.get('/api', (req, res) => {
   res.send('Response from express server');
@@ -99,11 +99,11 @@ app.post('/api/user', express.json(), async (req, res) => {
   }
 });
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(path.dirname('./dist'), 'dist', 'index.html'), {
-    root: path.dirname('./dist'),
-  });
-});
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(path.dirname('./dist'), 'dist', 'index.html'), {
+//     root: path.dirname('./dist'),
+//   });
+// });
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

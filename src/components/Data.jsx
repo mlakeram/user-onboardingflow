@@ -3,12 +3,10 @@ import { useState, useEffect } from 'react';
 export default function Data() {
   const [userData, setUserData] = useState('');
   const [adminSettings, setAdminSettings] = useState('');
-  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const getUserData = async () => {
-      setIsLoading(true);
       try {
         const data = await fetch(
           'https://useronboardingapi.vercel.app/api/data'
@@ -23,17 +21,11 @@ export default function Data() {
         setAdminSettings(settingsJSON);
       } catch (error) {
         setError(error);
-      } finally {
-        setIsLoading(false);
       }
     };
 
     getUserData();
   }, []);
-
-  if (isLoading) {
-    return <div className='fetchingStatusMessage'>Loading Data</div>;
-  }
 
   if (error) {
     return (

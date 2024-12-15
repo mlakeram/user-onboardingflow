@@ -4,13 +4,11 @@ export default function AdminSettings() {
   const [birthdayPage, setBirthdayPage] = useState(null);
   const [aboutMePage, setAboutMePage] = useState(null);
   const [addressPage, setAddressPage] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
   const [loadingError, setLoadingError] = useState(null);
   const [savedMessage, setSavedMessage] = useState('');
 
   useEffect(() => {
     const getUserData = async () => {
-      setIsLoading(true);
       try {
         const settings = await fetch(
           'https://useronboardingapi.vercel.app/api/adminsettings'
@@ -33,8 +31,6 @@ export default function AdminSettings() {
         );
       } catch (error) {
         setLoadingError(error);
-      } finally {
-        setIsLoading(false);
       }
     };
 
@@ -45,7 +41,6 @@ export default function AdminSettings() {
     setSavedMessage('');
 
     const submitSettings = async () => {
-      setIsLoading(true);
       try {
         await fetch('https://useronboardingapi.vercel.app/api/adminsettings', {
           method: 'POST',
@@ -59,15 +54,9 @@ export default function AdminSettings() {
         setTimeout(() => setSavedMessage(''), 2000);
       } catch (error) {
         setLoadingError(error);
-      } finally {
-        setIsLoading(false);
       }
     };
     submitSettings();
-  }
-
-  if (isLoading) {
-    return <div className='fetchingStatusMessage'>Loading settings</div>;
   }
 
   if (loadingError) {

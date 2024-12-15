@@ -4,6 +4,7 @@ export default function AdminSettings() {
   const [birthdayPage, setBirthdayPage] = useState(null);
   const [aboutMePage, setAboutMePage] = useState(null);
   const [addressPage, setAddressPage] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
   const [loadingError, setLoadingError] = useState(null);
   const [savedMessage, setSavedMessage] = useState('');
 

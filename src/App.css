@@ -52,12 +52,25 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   width: 400px;
   height: 500px;
   border: 3px solid #b1aaaa;
   border-radius: 3cap;
+}
+
+#pageHeading {
+  padding: 15px;
+}
+
+#pageContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
 }
 
 #emailInput,

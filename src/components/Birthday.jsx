@@ -6,7 +6,7 @@ export default function Birthday({ setBirthday }) {
       <label htmlFor='birthday'>Birthday: </label>
       <input
         type='date'
-        id='birthday'
+        id='birthdayInput'
         className='inputBox'
         onChange={(e) => setBirthday(e.target.value)}
       />

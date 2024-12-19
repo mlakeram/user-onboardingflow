@@ -6,10 +6,12 @@ import Credentials from './Credentials';
 import SubmitData from './SubmitData';
 import ProgressBar from './ProgressBar';
 import PageHeading from './PageHeading';
-// const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+import * as dotenv from 'dotenv';
 
-console.log(process.env.NODE_ENV);
-console.log(process.env.NODE_ENV === 'deployment');
+const environment = import.meta.env.NODE_ENV || 'development';
+const BACKEND_URL = import.meta.env.VITE_SERVER_URL;
+console.log(BACKEND_URL);
+console.log(environment);
 
 export default function Home() {
   const [onboardStep, setOnboardStep] = useState(1);
@@ -27,9 +29,6 @@ export default function Home() {
   const [adminSettings, setAdminSettings] = useState([]);
   const [error, setError] = useState('');
   const [highlightEmptyInput, setHighlightEmptyInput] = useState(false);
-
-  // console.log(BACKEND_URL);
-  // console.log(process.env.NODE_ENV);
 
   useEffect(() => {
     const getAdminSettings = async () => {
@@ -119,8 +118,6 @@ export default function Home() {
 
     return verifyInputs[input]();
   }
-
-  // console.log(verifyCompletedInput('credentials'));
 
   function handleNextClick(event) {
     event.preventDefault();

@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
-const BACKEND_URL = import.meta.env.VITE_SERVER_URL;
+
+const SERVER_USER_DATA_URL = import.meta.env.VITE_SERVER_USER_DATA_URL;
+const SERVER_ADMIN_SETTINGS_URL = import.meta.env
+  .VITE_SERVER_ADMIN_SETTINGS_URL;
 
 export default function Data() {
   const [userData, setUserData] = useState('');
@@ -11,11 +14,11 @@ export default function Data() {
     const getUserData = async () => {
       setIsLoading(true);
       try {
-        const data = await fetch(`${BACKEND_URL}/api/data`);
+        const data = await fetch(SERVER_USER_DATA_URL);
         const dataJSON = await data.json();
         setUserData(dataJSON);
 
-        const settings = await fetch(`${BACKEND_URL}/api/adminsettings`);
+        const settings = await fetch(SERVER_ADMIN_SETTINGS_URL);
         const settingsJSON = await settings.json();
         setAdminSettings(settingsJSON);
       } catch (error) {

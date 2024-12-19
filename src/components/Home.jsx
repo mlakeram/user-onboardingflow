@@ -7,10 +7,8 @@ import SubmitData from './SubmitData';
 import ProgressBar from './ProgressBar';
 import PageHeading from './PageHeading';
 
-const environment = import.meta.env.NODE_ENV || 'development';
-const BACKEND_URL = import.meta.env.VITE_SERVER_URL;
-console.log(BACKEND_URL);
-console.log(environment);
+const SERVER_ADMIN_SETTINGS_URL = import.meta.env
+  .VITE_SERVER_ADMIN_SETTINGS_URL;
 
 export default function Home() {
   const [onboardStep, setOnboardStep] = useState(1);
@@ -32,7 +30,7 @@ export default function Home() {
   useEffect(() => {
     const getAdminSettings = async () => {
       try {
-        const settings = await fetch(`${BACKEND_URL}/api/adminsettings`);
+        const settings = await fetch(SERVER_ADMIN_SETTINGS_URL);
         const settingsJSON = await settings.json();
         setAdminSettings(() => settingsJSON);
       } catch (error) {
@@ -128,8 +126,10 @@ export default function Home() {
       return;
     }
 
-    if (onboardStep < 4 && highlightEmptyInput) {
-      setHighlightEmptyInput(false);
+    if (onboardStep < 4 && !highlightEmptyInput) {
+      if (highlightEmptyInput) {
+        setHighlightEmptyInput(false);
+      }
       setOnboardStep((onBoardStep) => onBoardStep + 1);
     }
   }

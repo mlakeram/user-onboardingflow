@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
 
+const SERVER_ADMIN_SETTINGS_URL = import.meta.env
+  .VITE_SERVER_ADMIN_SETTINGS_URL;
+
 export default function AdminSettings() {
   const [birthdayPage, setBirthdayPage] = useState(null);
   const [aboutMePage, setAboutMePage] = useState(null);
@@ -10,9 +13,7 @@ export default function AdminSettings() {
   useEffect(() => {
     const getUserData = async () => {
       try {
-        const settings = await fetch(
-          'https://useronboardingapi.vercel.app/api/adminsettings'
-        );
+        const settings = await fetch(SERVER_ADMIN_SETTINGS_URL);
         const settingsJSON = await settings.json();
 
         setBirthdayPage(
@@ -42,7 +43,7 @@ export default function AdminSettings() {
 
     const submitSettings = async () => {
       try {
-        await fetch('https://useronboardingapi.vercel.app/api/adminsettings', {
+        await fetch(SERVER_ADMIN_SETTINGS_URL, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

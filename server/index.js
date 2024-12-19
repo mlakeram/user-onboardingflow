@@ -9,13 +9,7 @@ console.log(environment);
 
 const app = express();
 const PORT = 3001;
-app.use(
-  cors({
-    origin: ['https://useronboardingapi.vercel.app/*'],
-    methods: ['POST', 'GET'],
-    credentials: true,
-  })
-);
+app.use(cors());
 
 // eslint-disable-next-line no-undef
 // console.log(process.env.DATABASE_URL);

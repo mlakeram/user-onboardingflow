@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
+const VITE_SERVER_USER_URL = import.meta.env.VITE_SERVER_USER_URL;
+
 export default function SubmitData({
   email,
   password,
@@ -15,7 +17,7 @@ export default function SubmitData({
     const submitUserData = async () => {
       setIsLoading(true);
       try {
-        await fetch('https://useronboardingapi.vercel.app/api/user', {
+        await fetch(VITE_SERVER_USER_URL, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

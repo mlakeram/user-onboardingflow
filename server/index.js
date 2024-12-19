@@ -1,25 +1,32 @@
 import express from 'express';
 import pg from 'pg';
 import cors from 'cors';
-// import * as dotenv from 'dotenv';
-// import path from 'path';
+import * as dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+// eslint-disable-next-line no-undef
 const environment = process.env.NODE_ENV || 'development';
 
-console.log(environment);
+if (environment === 'development') {
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
+
+  dotenv.config({
+    path: path.resolve(__dirname, '../.env.development'),
+  });
+}
 
 const app = express();
 const PORT = 3001;
 app.use(cors());
 
 // eslint-disable-next-line no-undef
-// console.log(process.env.DATABASE_URL);
-
-const databaseURL =
-  'postgres://emjzlloo:KXquwbCINBQ8ukluBBuID_r8ujrej1F6@lallah.db.elephantsql.com/emjzlloo';
+const DATABASE_URL = process.env.DATABASE_URL;
 
 const { Pool } = pg;
 const pool = new Pool({
-  connectionString: databaseURL,
+  connectionString: DATABASE_URL,
 });
 
 // app.use(express.static(path.join(path.dirname('./dist'), 'dist')));

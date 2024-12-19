@@ -10,7 +10,8 @@ import PageHeading from './PageHeading';
 const SERVER_ADMIN_SETTINGS_URL = import.meta.env
   .VITE_SERVER_ADMIN_SETTINGS_URL;
 
-console.log('HOME - SERVER_ADMIN_SETTINGS_URL: ', SERVER_ADMIN_SETTINGS_URL);
+// console.log('HOME - VITE_SERVER_ALLUSER_URL: ', SERVER_ADMIN_SETTINGS_URL);
+
 export default function Home() {
   const [onboardStep, setOnboardStep] = useState(1);
   const [email, setEmail] = useState('');

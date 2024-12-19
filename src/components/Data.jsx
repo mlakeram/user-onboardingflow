@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const SERVER_USER_DATA_URL = import.meta.env.VITE_SERVER_USER_DATA_URL;
+const SERVER_USER_DATA_URL = import.meta.env.VITE_SERVER_ALLUSER_URL;
 const SERVER_ADMIN_SETTINGS_URL = import.meta.env
   .VITE_SERVER_ADMIN_SETTINGS_URL;
 

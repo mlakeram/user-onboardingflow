@@ -127,8 +127,10 @@ nav a {
 }
 
 #adminContainer {
-  justify-content: center;
-  height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 30px;
 }
 
 .adminSetting label {
@@ -156,7 +158,9 @@ nav a {
 #dataContainer {
   display: flex;
   flex-direction: column;
-  height: 85vh;
+  width: 100vw;
+  gap: 20px;
+  padding: 20px;
 }
 
 h2 {

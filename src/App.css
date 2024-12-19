@@ -13,7 +13,7 @@
   justify-content: center;
   align-items: center;
   margin: 10px 0;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 #homeContainer {
@@ -23,7 +23,7 @@
   align-items: center;
   width: 100vw;
   padding-bottom: 50px;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 #progressBarContainer {
@@ -55,8 +55,9 @@
   justify-content: center;
   align-items: center;
   width: 400px;
-  height: 450px;
-  border: 1px solid red;
+  height: 500px;
+  border: 3px solid #b1aaaa;
+  border-radius: 3cap;
 }
 
 #emailInput,

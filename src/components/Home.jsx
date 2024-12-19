@@ -126,10 +126,8 @@ export default function Home() {
       return;
     }
 
-    if (onboardStep < 4 && !highlightEmptyInput) {
-      if (highlightEmptyInput) {
-        setHighlightEmptyInput(false);
-      }
+    if (onboardStep < 4) {
+      setHighlightEmptyInput(false);
       setOnboardStep((onBoardStep) => onBoardStep + 1);
     }
   }

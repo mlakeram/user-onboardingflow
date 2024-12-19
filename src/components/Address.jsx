@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-export default function Address({ address, setAddress }) {
+export default function Address({ address, setAddress, highlightEmptyInput }) {
   const handleChange = (event) => {
     event.preventDefault();
     const { name, value } = event.target;
@@ -14,7 +14,9 @@ export default function Address({ address, setAddress }) {
       <input
         type='text'
         id='street'
-        className='inputBox'
+        className={`inputBox ${
+          highlightEmptyInput && !address.street ? 'emptyInput' : ''
+        }`}
         name='street'
         value={address.street}
         placeholder='Street address'
@@ -24,7 +26,9 @@ export default function Address({ address, setAddress }) {
       <input
         type='text'
         id='city'
-        className='inputBox'
+        className={`inputBox ${
+          highlightEmptyInput && !address.city ? 'emptyInput' : ''
+        }`}
         name='city'
         value={address.city}
         placeholder='City'
@@ -34,7 +38,9 @@ export default function Address({ address, setAddress }) {
       <input
         type='text'
         id='state'
-        className='inputBox'
+        className={`inputBox ${
+          highlightEmptyInput && !address.state ? 'emptyInput' : ''
+        }`}
         name='state'
         value={address.state}
         placeholder='State'
@@ -44,7 +50,9 @@ export default function Address({ address, setAddress }) {
       <input
         type='text'
         id='zip'
-        className='inputBox'
+        className={`inputBox ${
+          highlightEmptyInput && !address.zip ? 'emptyInput' : ''
+        }`}
         name='zip'
         value={address.zip}
         placeholder='Zip code'
@@ -54,7 +62,9 @@ export default function Address({ address, setAddress }) {
       <input
         type='text'
         id='country'
-        className='inputBox'
+        className={`inputBox ${
+          highlightEmptyInput && !address.country ? 'emptyInput' : ''
+        }`}
         name='country'
         value={address.country}
         placeholder='Country'
@@ -73,4 +83,5 @@ Address.propTypes = {
     country: PropTypes.string.isRequired,
   }).isRequired,
   setAddress: PropTypes.func.isRequired,
+  highlightEmptyInput: PropTypes.bool,
 };

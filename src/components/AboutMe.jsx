@@ -1,11 +1,13 @@
 import PropTypes from 'prop-types';
 
-export default function AboutMe({ aboutMe, setAboutMe }) {
+export default function AboutMe({ aboutMe, setAboutMe, highlightEmptyInput }) {
   return (
     <div id='aboutMeContainer'>
       <textarea
         id='aboutMe'
-        className='inputBox'
+        className={`inputBox ${
+          highlightEmptyInput && !aboutMe ? 'emptyInput' : ''
+        }`}
         value={aboutMe}
         placeholder='About me'
         onChange={(e) => setAboutMe(e.target.value)}
@@ -17,4 +19,5 @@ export default function AboutMe({ aboutMe, setAboutMe }) {
 AboutMe.propTypes = {
   aboutMe: PropTypes.string,
   setAboutMe: PropTypes.func.isRequired,
+  highlightEmptyInput: PropTypes.bool,
 };

@@ -1,13 +1,19 @@
 import PropTypes from 'prop-types';
 
-export default function Birthday({ setBirthday }) {
+export default function Birthday({
+  birthday,
+  setBirthday,
+  highlightEmptyInput,
+}) {
   return (
     <div id='birthdayContainer'>
       <label htmlFor='birthday'>Birthday: </label>
       <input
         type='date'
         id='birthdayInput'
-        className='inputBox'
+        className={`inputBox ${
+          highlightEmptyInput && !birthday ? 'emptyInput' : ''
+        }`}
         onChange={(e) => setBirthday(e.target.value)}
       />
     </div>
@@ -16,4 +22,6 @@ export default function Birthday({ setBirthday }) {
 
 Birthday.propTypes = {
   setBirthday: PropTypes.func.isRequired,
+  birthday: PropTypes.string,
+  highlightEmptyInput: PropTypes.bool,
 };

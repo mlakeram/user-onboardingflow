@@ -4,6 +4,7 @@ export default function Credentials({
   password,
   setEmail,
   setPassword,
+  highlightEmptyInput,
 }) {
   return (
     <form>
@@ -11,8 +12,10 @@ export default function Credentials({
         <input
           type='email'
           id='emailInput'
-          className='inputBox'
           value={email}
+          className={`inputBox ${
+            highlightEmptyInput && !email ? 'emptyInput' : ''
+          }`}
           placeholder='Email address'
           onChange={(e) => setEmail(e.target.value)}
           required
@@ -22,7 +25,9 @@ export default function Credentials({
         <input
           type='password'
           id='passwordInput'
-          className='inputBox'
+          className={`inputBox ${
+            highlightEmptyInput && !password ? 'emptyInput' : ''
+          }`}
           value={password}
           placeholder='Password'
           onChange={(e) => setPassword(e.target.value)}
@@ -38,4 +43,5 @@ Credentials.propTypes = {
   password: PropTypes.string,
   setEmail: PropTypes.func.isRequired,
   setPassword: PropTypes.func.isRequired,
+  highlightEmptyInput: PropTypes.bool,
 };

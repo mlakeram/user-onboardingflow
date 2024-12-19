@@ -13,7 +13,6 @@
   justify-content: center;
   align-items: center;
   margin: 10px 0;
-  /* border: 1px solid red; */
 }
 
 #homeContainer {
@@ -23,7 +22,6 @@
   align-items: center;
   width: 100vw;
   padding-bottom: 50px;
-  /* border: 1px solid red; */
 }
 
 #progressBarContainer {
@@ -52,7 +50,6 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
   width: 400px;
   height: 500px;
@@ -75,7 +72,7 @@
 
 #emailInput,
 #passwordInput {
-  scale: 1.5;
+  /* scale: 1.5; */
   margin: 15px;
 }
 
@@ -105,6 +102,12 @@
 
 .inputBox {
   margin: 5px 0;
+  padding: 5px;
+  margin: 12px 0;
+}
+
+.emptyInput {
+  border: 1px solid red;
 }
 
 nav ul {

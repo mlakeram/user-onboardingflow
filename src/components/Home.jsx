@@ -25,6 +25,7 @@ export default function Home() {
   });
   const [adminSettings, setAdminSettings] = useState([]);
   const [error, setError] = useState('');
+  const [highlightEmptyInput, setHighlightEmptyInput] = useState(false);
 
   // console.log(BACKEND_URL);
   // console.log(process.env.NODE_ENV);
@@ -53,16 +54,32 @@ export default function Home() {
         password={password}
         setEmail={setEmail}
         setPassword={setPassword}
+        highlightEmptyInput={highlightEmptyInput}
       />
     ),
     birthday: (
-      <Birthday key='birthday' birthday={birthday} setBirthday={setBirthday} />
+      <Birthday
+        key='birthday'
+        birthday={birthday}
+        setBirthday={setBirthday}
+        highlightEmptyInput={highlightEmptyInput}
+      />
     ),
     aboutMe: (
-      <AboutMe key='aboutme' aboutMe={aboutMe} setAboutMe={setAboutMe} />
+      <AboutMe
+        key='aboutme'
+        aboutMe={aboutMe}
+        setAboutMe={setAboutMe}
+        highlightEmptyInput={highlightEmptyInput}
+      />
     ),
     address: (
-      <Address key='address' address={address} setAddress={setAddress} />
+      <Address
+        key='address'
+        address={address}
+        setAddress={setAddress}
+        highlightEmptyInput={highlightEmptyInput}
+      />
     ),
     submitData: (
       <SubmitData
@@ -72,13 +89,52 @@ export default function Home() {
         birthday={birthday}
         aboutMe={aboutMe}
         address={address}
+        highlightEmptyInput={highlightEmptyInput}
       />
     ),
   };
 
+  function verifyCompletedInput(input) {
+    const verifyInputs = {
+      credentials: () => {
+        return !!email && !!password;
+      },
+      birthday: () => {
+        return !!birthday;
+      },
+      aboutMe: () => {
+        return !!aboutMe;
+      },
+      address: () => {
+        return (
+          !!address.street &&
+          !!address.city &&
+          !!address.state &&
+          !!address.zip &&
+          !!address.country
+        );
+      },
+    };
+
+    return verifyInputs[input]();
+  }
+
+  // console.log(verifyCompletedInput('credentials'));
+
   function handleNextClick(event) {
     event.preventDefault();
-    if (onboardStep < 4) {
+
+    const isAllInputSupplied = adminSettings
+      .filter((setting) => setting.page === onboardStep)
+      .every((setting) => verifyCompletedInput(setting.component));
+
+    if (!isAllInputSupplied) {
+      setHighlightEmptyInput(true);
+      return;
+    }
+
+    if (onboardStep < 4 && highlightEmptyInput) {
+      setHighlightEmptyInput(false);
       setOnboardStep((onBoardStep) => onBoardStep + 1);
     }
   }

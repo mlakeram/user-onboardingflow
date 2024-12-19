@@ -6,7 +6,6 @@ import Credentials from './Credentials';
 import SubmitData from './SubmitData';
 import ProgressBar from './ProgressBar';
 import PageHeading from './PageHeading';
-import * as dotenv from 'dotenv';
 
 const environment = import.meta.env.NODE_ENV || 'development';
 const BACKEND_URL = import.meta.env.VITE_SERVER_URL;
@@ -33,9 +32,7 @@ export default function Home() {
   useEffect(() => {
     const getAdminSettings = async () => {
       try {
-        const settings = await fetch(
-          'https://useronboardingapi.vercel.app/api/adminsettings'
-        );
+        const settings = await fetch(`${BACKEND_URL}/api/adminsettings`);
         const settingsJSON = await settings.json();
         setAdminSettings(() => settingsJSON);
       } catch (error) {

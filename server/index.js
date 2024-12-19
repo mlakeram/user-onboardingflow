@@ -3,10 +3,9 @@ import pg from 'pg';
 import cors from 'cors';
 // import * as dotenv from 'dotenv';
 // import path from 'path';
+const environment = process.env.NODE_ENV || 'development';
 
-// const environment = process.env.NODE_ENV || 'development'
-
-// console.log(process.env.NODE_ENV);
+console.log(environment);
 
 const app = express();
 const PORT = 3001;

@@ -8,7 +8,7 @@ import ProgressBar from './ProgressBar';
 import PageHeading from './PageHeading';
 // const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
-// console.log(process.env.NODE_ENV);
+console.log(process.env.NODE_ENV);
 
 export default function Home() {
   const [onboardStep, setOnboardStep] = useState(1);

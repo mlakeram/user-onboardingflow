@@ -15,6 +15,22 @@
   margin: 10px 0;
 }
 
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  display: inline-block;
+  margin: 0 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #b1aaaa;
+}
+
 #homeContainer {
   position: relative;
   display: flex;
@@ -72,8 +88,34 @@
 
 #emailInput,
 #passwordInput {
-  /* scale: 1.5; */
   margin: 15px;
+}
+
+#addressInput1 {
+  display: flex;
+}
+
+#addressInput2 {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+#city {
+  width: 150px;
+}
+
+#state {
+  width: 55px;
+  font-size: large;
+}
+
+#zip {
+  width: 75px;
+}
+
+#country {
+  width: 120px;
 }
 
 #adminContainer,
@@ -104,26 +146,11 @@
   margin: 5px 0;
   padding: 5px;
   margin: 12px 0;
+  font-size: large;
 }
 
 .emptyInput {
   border: 1px solid red;
-}
-
-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-nav li {
-  display: inline-block;
-  margin: 0 20px;
-}
-
-nav a {
-  text-decoration: none;
-  color: #b1aaaa;
 }
 
 #adminContainer {

@@ -3,8 +3,6 @@ import { useState, useEffect } from 'react';
 const SERVER_ADMIN_SETTINGS_URL = import.meta.env
   .VITE_SERVER_ADMIN_SETTINGS_URL;
 
-// console.log('ADMIN - SERVER_ADMIN_SETTINGS_URL', SERVER_ADMIN_SETTINGS_URL);
-
 export default function AdminSettings() {
   const [birthdayPage, setBirthdayPage] = useState(null);
   const [aboutMePage, setAboutMePage] = useState(null);

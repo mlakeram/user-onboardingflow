@@ -4,6 +4,10 @@ import AboutMe from './AboutMe';
 import Address from './Address';
 import Credentials from './Credentials';
 import SubmitData from './SubmitData';
+import ProgressBar from './ProgressBar';
+// const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
+// console.log(process.env.NODE_ENV);
 
 export default function Home() {
   const [onboardStep, setOnboardStep] = useState(1);
@@ -20,6 +24,9 @@ export default function Home() {
   });
   const [adminSettings, setAdminSettings] = useState([]);
   const [error, setError] = useState('');
+
+  // console.log(BACKEND_URL);
+  // console.log(process.env.NODE_ENV);
 
   useEffect(() => {
     const getAdminSettings = async () => {
@@ -84,19 +91,22 @@ export default function Home() {
   }
 
   return (
-    <div id='onboardingPagesContainer'>
-      {adminSettings
-        .filter((setting) => setting.page === onboardStep)
-        .map((setting, idx, arr) => (
-          <React.Fragment key={setting.component}>
-            {onBoardingPages[setting.component]}
-            {setting.page < 4 && idx === arr.length - 1 && (
-              <button onClick={(e) => handleNextClick(e)}>
-                {setting.page < 3 ? 'Next' : 'Submit'}
-              </button>
-            )}
-          </React.Fragment>
-        ))}
+    <div id='homeContainer'>
+      <ProgressBar onBoardStep={onboardStep} />
+      <div id='onboardingPagesContainer'>
+        {adminSettings
+          .filter((setting) => setting.page === onboardStep)
+          .map((setting, idx, arr) => (
+            <React.Fragment key={setting.component}>
+              {onBoardingPages[setting.component]}
+              {setting.page < 4 && idx === arr.length - 1 && (
+                <button onClick={(e) => handleNextClick(e)}>
+                  {setting.page < 3 ? 'Next' : 'Submit'}
+                </button>
+              )}
+            </React.Fragment>
+          ))}
+      </div>
     </div>
   );
 }

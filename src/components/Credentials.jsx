@@ -10,7 +10,7 @@ export default function Credentials({
       <div>
         <input
           type='email'
-          id='email'
+          id='emailInput'
           className='inputBox'
           value={email}
           placeholder='Email address'
@@ -21,7 +21,7 @@ export default function Credentials({
       <div>
         <input
           type='password'
-          id='password'
+          id='passwordInput'
           className='inputBox'
           value={password}
           placeholder='Password'

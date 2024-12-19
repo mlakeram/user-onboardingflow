@@ -1,11 +1,70 @@
-#headerContainer {
+#appContainer {
   display: flex;
-  width: 95vw;
-  justify-content: center;
-  margin: 20px;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
 }
 
-#onboardingPagesContainer,
+#headerContainer {
+  display: flex;
+  width: 100vw;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+  border: 1px solid red;
+}
+
+#homeContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  padding-bottom: 50px;
+  border: 1px solid red;
+}
+
+#progressBarContainer {
+  display: flex;
+  justify-content: center;
+  height: 5px;
+  margin: 30px 0;
+  gap: 5px;
+}
+
+.progressBar {
+  background-color: gray;
+  width: 55px;
+  border-radius: 3cap;
+}
+
+.progressBarCompleted {
+  background-color: limegreen;
+}
+
+.progressBarCurrent {
+  background-color: yellow;
+}
+
+#onboardingPagesContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  height: 450px;
+  border: 1px solid red;
+}
+
+#emailInput,
+#passwordInput {
+  scale: 1.5;
+  margin: 15px;
+}
+
 #adminContainer,
 .fetchingStatusMessage {
   display: flex;
@@ -42,7 +101,7 @@ nav ul {
 
 nav li {
   display: inline-block;
-  margin-right: 20px;
+  margin: 0 20px;
 }
 
 nav a {
